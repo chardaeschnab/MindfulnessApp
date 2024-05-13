@@ -3,7 +3,7 @@
 --
 
 SET foreign_key_checks = 0;
-DROP TABLE if exists students;
+DROP TABLE if exists videos;
 SET foreign_key_checks = 1;
 
 --
@@ -11,9 +11,11 @@ SET foreign_key_checks = 1;
 --
 /*when we export sql code we can copy it here*/
 
-CREATE TABLE students(
-    id INT NOT NULL AUTO_INCREMENT, 
-    firstname VARCHAR(40) not null, 
-    lastname VARCHAR(40) not null, 
-    PRIMARY KEY (id)
-    );
+CREATE TABLE `Videos`(
+    `id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `link` VARCHAR(255) NOT NULL,
+    `category` VARCHAR(255) NOT NULL,
+    `description` VARCHAR(255) NOT NULL
+);
+
+INSERT INTO videos (link, description, category) VALUES ("test", "test", "test");
