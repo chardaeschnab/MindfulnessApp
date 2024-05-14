@@ -10,8 +10,6 @@ function App() {
 
   return (
     <>
-      <h1>Welcome to my Homepage</h1>
-
       <nav>
         <ul>
           <li>
@@ -19,6 +17,9 @@ function App() {
           </li>
           <li>
             <Link to="/admin">Admin</Link>
+          </li>
+          <li>
+            <Link to="/video">Video</Link>
           </li>
         </ul>
       </nav>
