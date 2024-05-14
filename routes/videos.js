@@ -12,7 +12,7 @@ router.get("/", async function (req, res, next) {
 //GET video submission
 router.get("/:category", async function (req, res, next) {
   try {
-    const videoList = `SELECT * FROM videos WHERE category=${req.params.category}`;
+    const videoList = `SELECT * FROM videos WHERE category="${req.params.category}"`;
     const result = await db(videoList);
     res.status(200).send(result.data);
   } catch (err) {
@@ -33,6 +33,8 @@ router.post("/", async function (req, res, next) {
     res.status(500).send(err);
   }
 });
+
+
 
 
 

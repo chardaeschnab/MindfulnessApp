@@ -26,7 +26,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/admin" element={<Admin />} />
-        <Route path="/video" element={<VideoDisplay />} />
+        <Route path="/video/:category" element={<VideoDisplay />} />
       </Routes>
     </>
   );

@@ -1,6 +1,9 @@
 import React from "react";
+import { Routes, Route, Link } from "react-router-dom";
 
 export default function HomePage() {
+  
+
   return (
     <div>
       <h1>Welcome the Mind Playground</h1>
@@ -10,14 +13,17 @@ export default function HomePage() {
       <br />
       <br />
       <p>Let's begin... how are you feeling today?</p>
-      <button>HAPPY</button>
-      <button>SAD</button>
-      <button>ANGRY</button>
+      <Link to="/video/happy">
+        <button>HAPPY</button>
+      </Link>
+      <Link to="/video/sad"><button>SAD</button></Link>
+
+      <Link to="/video/angry"><button>ANGRY</button></Link>
       <br />
-      <button>SCARED</button>
-      <button>SURPRISED</button>
-      <button>CONFUSED</button>
-      <button>...NEUTRAL/I don't really know how I feel</button>
+      <Link to="/video/scared"><button>SCARED</button></Link>
+      <Link to="/video/surprised"><button>SURPRISED</button></Link>
+      <Link to="/video/confused"><button>CONFUSED</button></Link>
+      <Link to="/video/neutral"><button>...NEUTRAL/I don't really know how I feel</button></Link>
     </div>
   );
 }
