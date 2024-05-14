@@ -23,8 +23,11 @@ router.get("/:category", async function (req, res, next) {
 //POST video
 router.post("/", async function (req, res, next) {
   try {
-    const submitVideo = `INSERT INTO videos (link, description, category) VALUES ${req.body.link} ${req.body.description} ${req.body.category}`;
-    const result = await db(displayVideo);
+    const submitVideo = `INSERT INTO videos (link, description, category) VALUES ("${req.body.link}", "${req.body.description}", "${req.body.category}")`;
+    await db(submitVideo);
+    const videoList = `SELECT * FROM videos`;
+    const result = await db(videoList);
+
     res.status(200).send(result.data);
   } catch (err) {
     res.status(500).send(err);
