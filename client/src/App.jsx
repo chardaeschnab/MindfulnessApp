@@ -8,7 +8,27 @@ import VideoDisplay from "./pages/VideoDisplay";
 function App() {
   const [count, setCount] = useState(0);
 
-  return <>em</>;
+  return (
+    <>
+      <h1>Welcome to my Homepage</h1>
+
+      <nav>
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/admin">Admin</Link>
+          </li>
+        </ul>
+      </nav>
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+        <Route path="/admin" element={<Admin />} />
+        <Route path="/video" element={<VideoDisplay />} />
+      </Routes>
+    </>
+  );
 }
 
 export default App;
