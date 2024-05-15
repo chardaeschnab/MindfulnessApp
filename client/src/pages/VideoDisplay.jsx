@@ -25,7 +25,6 @@ export default function VideoDisplay() {
       .then((data) => {
         // upon success, update tasks
         setVideoComment(data);
-        console.log(videoComment);
       })
       .catch((error) => {
         // upon failure, show error message
@@ -64,9 +63,9 @@ export default function VideoDisplay() {
         referrerpolicy="strict-origin-when-cross-origin"
         allowfullscreen
       ></iframe>
-      {/* <ul>
-        
-      </ul> */}
+      {videoComment.map((comment) => (
+        <li key={comment.id}>{comment.text}</li>
+      ))}
     </div>
   );
 }
