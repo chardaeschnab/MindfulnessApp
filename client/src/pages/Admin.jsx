@@ -1,4 +1,3 @@
-import { Dropdown } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import React, { useState } from "react";
 
@@ -56,8 +55,19 @@ export default function Admin() {
         <option value="Neutral">Neutral</option>
       </Form.Select>
       <br />
-      <input type="text" name="videoLink" value={link} onChange={(e) => handleLinkChange(e)} placeholder="Enter vide URL" />
-      <input text="text" value={description} onChange={(e) => handleDescriptionChange(e)} placeholder="Describe Video Here" />
+      <input
+        type="text"
+        name="videoLink"
+        value={link}
+        onChange={(e) => handleLinkChange(e)}
+        placeholder="Enter vide URL"
+      />
+      <input
+        text="text"
+        value={description}
+        onChange={(e) => handleDescriptionChange(e)}
+        placeholder="Describe Video Here"
+      />
       <br />
       <br />
       <button onClick={(event) => Submission(event)}>Submit Video</button>

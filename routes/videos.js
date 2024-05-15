@@ -3,6 +3,7 @@ var router = express.Router();
 var db = require("../model/helper.js");
 
 //retrieve full list of videos
+// /api/videos
 router.get("/", async function (req, res, next) {
   const videoList = `SELECT * FROM videos`;
   const result = await db(videoList);
@@ -10,11 +11,12 @@ router.get("/", async function (req, res, next) {
 });
 
 //GET video submission
+// /api/videos/whatever
 router.get("/:category", async function (req, res, next) {
   try {
-    const videoList = `SELECT * FROM videos WHERE category="${req.params.category}"`;
+    const videoList = `SELECT * FROM videos WHERE category="${req.params.category}" ORDER BY RAND() LIMIT 1`;
     const result = await db(videoList);
-    res.status(200).send(result.data);
+    res.status(200).send(result.data[0]);
   } catch (err) {
     res.status(500).send(err);
   }
@@ -33,9 +35,5 @@ router.post("/", async function (req, res, next) {
     res.status(500).send(err);
   }
 });
-
-
-
-
 
 module.exports = router;
