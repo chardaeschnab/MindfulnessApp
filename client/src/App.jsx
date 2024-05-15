@@ -13,13 +13,13 @@ function App() {
       <nav>
         <ul>
           <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/admin">Admin</Link>
-          </li>
-          <li>
-            <Link to="/video">Video</Link>
+            <Link to="/">Home || </Link>
+         
+        
+            <Link to="/admin">Admin ||</Link>
+         
+         
+            <Link to="/video">Video ||</Link>
           </li>
         </ul>
       </nav>

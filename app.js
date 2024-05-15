@@ -6,6 +6,7 @@ const cors = require('cors');
 
 
 var videosRouter = require('./routes/videos');
+var commentsRouter = require('./routes/comments');
 
 var app = express();
 app.use(cors());
@@ -17,5 +18,6 @@ app.use(cookieParser());
 // app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api/videos', videosRouter);
+app.use('/api/comments', commentsRouter);
 
 module.exports = app;
