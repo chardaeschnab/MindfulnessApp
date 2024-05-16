@@ -23,9 +23,9 @@ router.get("/:video_id", async function (req, res, next) {
 //post comment on a video
 router.post("/", async function (req, res, next) {
   try {
-    const submitComment = `INSERT INTO comments (text, video_id) VALUES ("${req.body.text}", "${req.body.video_id}")`;
+    const submitComment = `INSERT INTO comments (text, video_id, parent_id) VALUES ("${req.body.text}", "${req.body.video_id}", "${req.body.parent_id}")`;
     await db(submitComment);
-    const commentList = `SELECT * FROM comments`;
+    const commentList = `SELECT * FROM comments WHERE video_id = ${req.body.video_id}`;
     const result = await db(commentList);
     res.status(200).send(result.data);
   } catch (err) {

@@ -2,7 +2,7 @@ import React from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import mindplayground from "/images/mindplayground.jpg";
 import "../index.css";
-
+import Button from "react-bootstrap/Button";
 
 export default function HomePage() {
   return (
@@ -11,32 +11,29 @@ export default function HomePage() {
       <p>Here, you can find a nice collection of meditation videos.</p>
       <p>We hope you enjoy your experience! </p>
       <br />
-      <br />
-      <br />
-      <img src={mindplayground} alt="website opener" />
+      <img className="homepage-image" src={mindplayground} alt="website opener" />
       <p>Let's begin... how are you feeling today?</p>
       <Link to="/video/happy">
-        <button>HAPPY</button>
+        <Button variant="warning">HAPPY</Button>
       </Link>
       <Link to="/video/sad">
-        <button>SAD</button>
+        <Button variant="secondary">SAD</Button>
       </Link>
-
       <Link to="/video/angry">
-        <button>ANGRY</button>
+        <Button variant="danger">ANGRY</Button>
       </Link>
       <br />
       <Link to="/video/scared">
-        <button>SCARED</button>
+        <Button variant="dark">SCARED</Button>
       </Link>
       <Link to="/video/surprised">
-        <button>SURPRISED</button>
+        <Button variant="info">SURPRISED</Button>
       </Link>
       <Link to="/video/confused">
-        <button>CONFUSED</button>
+        <Button variant="light">CONFUSED</Button>
       </Link>
       <Link to="/video/neutral">
-        <button>NEUTRAL</button>
+        <Button variant="success">NEUTRAL</Button>
       </Link>
     </div>
   );

@@ -4,6 +4,7 @@ import "./App.css";
 import Admin from "./pages/Admin";
 import Homepage from "./pages/Homepage";
 import VideoDisplay from "./pages/VideoDisplay";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -14,11 +15,9 @@ function App() {
         <ul>
           <li>
             <Link to="/">Home || </Link>
-         
-        
+
             <Link to="/admin">Admin ||</Link>
-         
-         
+
             <Link to="/video">Video ||</Link>
           </li>
         </ul>
