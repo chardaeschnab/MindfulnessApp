@@ -85,6 +85,7 @@ export default function VideoDisplay() {
       });
       const newComments = await response.json();
       setVideoComments(newComments);
+      setInput("");
     } catch (error) {
       // upon failure, show error message
       console.log("Error was found", error);
@@ -140,8 +141,13 @@ export default function VideoDisplay() {
         </Button>
       </form>
       {videoComments.map((comment) => (
-        <li key={comment.id}>
+        <li key={comment.id} className="comment">
           {comment.text}
+          {comment.replies.map((reply) => (
+            <li key={reply.id} className="reply">
+              {reply.text}
+            </li>
+          ))}
           {replyBoxState[comment.id] ? (
             <form onSubmit={(e) => handleReplySubmit(e, comment.id)}>
               <input type="text" placeholder="Write your reply..." />

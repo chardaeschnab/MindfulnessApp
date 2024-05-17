@@ -79,3 +79,17 @@ button:focus-visible {
   width: 50%;
   height: 50%;
 }
+
+.comment {
+  font-weight: bold;
+}
+
+.reply {
+  text-indent: 20%;
+}
+
+.replies {
+  list-style: none;
+  padding-left: 20px;
+  margin: 0;
+}

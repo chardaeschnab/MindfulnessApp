@@ -17,13 +17,15 @@ CREATE TABLE `Videos`(
     `link` VARCHAR(255) NOT NULL,
     `category` VARCHAR(255) NOT NULL,
     `description` VARCHAR(255) NOT NULL
+
 );
 
 CREATE TABLE `Comments`(
     `id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `text` VARCHAR(255) NOT NULL,
     `video_id` INT NOT NULL,
-    `parent_id` INT
+    `parent_id` INT,
+    `reply_id` INT
     -- FOREIGN KEY (video_id) REFERENCES Videos(id)
 );
 

@@ -22,6 +22,21 @@ router.get("/:category", async function (req, res, next) {
   }
 });
 
+router.get("/something/:id", async function (req, res, next) {
+  try {
+    const videoId = req.params.id;
+    const videoQuery = `SELECT * FROM videos WHERE id = ${videoId}`;
+    const result = await db(videoQuery);
+    if (result.data.length === 0) {
+      res.status(404).send({ message: "Video not found" });
+    } else {
+      res.status(200).send(result.data[0]);
+    }
+  } catch (err) {
+    res.status(500).send(err);
+  }
+});
+
 //POST video
 router.post("/", async function (req, res, next) {
   try {
@@ -35,7 +50,5 @@ router.post("/", async function (req, res, next) {
     res.status(500).send(err);
   }
 });
-
-
 
 module.exports = router;
