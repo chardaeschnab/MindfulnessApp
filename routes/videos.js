@@ -14,9 +14,17 @@ router.get("/", async function (req, res, next) {
 // /api/videos/whatever
 router.get("/:category", async function (req, res, next) {
   try {
-    const videoList = `SELECT * FROM videos WHERE category="${req.params.category}" ORDER BY RAND() LIMIT 1`;
+    const videoList = `SELECT * FROM videos WHERE category="${req.params.category}" ORDER BY RAND() LIMIT 1;`;
     const result = await db(videoList);
-    res.status(200).send(result.data[0]);
+    
+    const videoData = result.data[0];
+    // console.log(videoList);
+    const videoId = videoData.id; //extract the video ID form the retrieved data (once selected based on category)
+
+    const insertQuery = `INSERT INTO plays (video_id) VALUES (${videoId});`;
+    await db(insertQuery);
+
+    res.status(200).send(videoData);
   } catch (err) {
     res.status(500).send(err);
   }
@@ -50,5 +58,7 @@ router.post("/", async function (req, res, next) {
     res.status(500).send(err);
   }
 });
+
+
 
 module.exports = router;

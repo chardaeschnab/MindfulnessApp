@@ -113,7 +113,7 @@ export default function VideoDisplay() {
   };
 
   return (
-    <div className="container d-flex flex-column justify-content-center align-items-center">
+    <div className="container ">
       <h1>
         You said you're feeling: <br /> {emotion}
       </h1>
@@ -123,10 +123,10 @@ export default function VideoDisplay() {
         height="315"
         src={video.link?.replace("youtube.com/watch?v=", "youtube.com/embed/")}
         title="YouTube video player"
-        frameborder="0"
+        frameBorder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        referrerpolicy="strict-origin-when-cross-origin"
-        allowfullscreen
+        referrerPolicy="strict-origin-when-cross-origin"
+        allowFullScreen
       ></iframe>
       <h4>Below is the comment section, yay</h4>
       <form>
@@ -136,42 +136,55 @@ export default function VideoDisplay() {
           placeholder="your comment here..."
           onChange={(e) => handleChange(e)}
         />
-        <Button variant="dark" size="sm" onClick={(e) => handleSubmit(e)}>
+        <Button
+          variant="dark"
+          size="sm"
+          onClick={(e) => handleSubmit(e)}
+          disabled={input.trim() === ""}
+        >
           Share your comment
         </Button>
       </form>
-      {videoComments.map((comment) => (
-        <li key={comment.id} className="comment">
-          {comment.text}
-          {comment.replies.map((reply) => (
-            <li key={reply.id} className="reply">
-              {reply.text}
-            </li>
-          ))}
-          {replyBoxState[comment.id] ? (
-            <form onSubmit={(e) => handleReplySubmit(e, comment.id)}>
-              <input type="text" placeholder="Write your reply..." />
-              <Button variant="outline-info" size="sm" type="submit">
-                {" "}
-                Submit Reply
+
+      <ul>
+        {videoComments.map((comment) => (
+          <li key={comment.id} className="comment">
+            {comment.text}
+            <ul>
+              {comment.replies.map((reply) => (
+                <li key={reply.id} className="reply">
+                  {reply.text}
+                </li>
+              ))}
+            </ul>
+            {replyBoxState[comment.id] ? (
+              <div className="reply-actions">
+                <form onSubmit={(e) => handleReplySubmit(e, comment.id)}>
+                  <input type="text" placeholder="Write your reply..." />
+                  <Button variant="outline-info" size="sm" type="submit">
+                    {" "}
+                    Submit Reply
+                  </Button>
+                </form>
+              </div>
+            ) : (
+              <Button
+                variant="info"
+                size="sm"
+                className="blue-reply-button"
+                onClick={() =>
+                  setReplyBoxState({
+                    ...replyBoxState,
+                    [comment.id]: !replyBoxState[comment.id],
+                  })
+                }
+              >
+                Reply
               </Button>
-            </form>
-          ) : (
-            <Button
-              variant="info"
-              size="sm"
-              onClick={() =>
-                setReplyBoxState({
-                  ...replyBoxState,
-                  [comment.id]: !replyBoxState[comment.id],
-                })
-              }
-            >
-              Reply
-            </Button>
-          )}
-        </li>
-      ))}
+            )}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }

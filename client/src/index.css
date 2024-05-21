@@ -24,8 +24,8 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
+  /* display: flex;
+  place-items: center; */
   min-width: 320px;
   min-height: 100vh;
 }
@@ -82,10 +82,14 @@ button:focus-visible {
 
 .comment {
   font-weight: bold;
+  list-style: none;
+  padding-left: 20px;
 }
 
 .reply {
-  text-indent: 20%;
+  list-style: none;
+  padding-left: 30px;
+  border-left: 1px solid #ddd;
 }
 
 .replies {
@@ -93,3 +97,18 @@ button:focus-visible {
   padding-left: 20px;
   margin: 0;
 }
+
+.reply-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.reply-actions button {
+  margin-left: auto;
+}
+
+button {
+  border-radius: 0;
+}
+
+
