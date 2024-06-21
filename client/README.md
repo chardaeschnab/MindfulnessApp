@@ -1,35 +1,68 @@
 # Mindfulness App
-## Built for an integrative mindfulness experience that makes meditation fun for children
 
-# Project Description
-This app currently has 3 main features: 
-    - Emotion selection: users select the emotion they are currently feeling 
-    - Random video generator: based on the emotion selected, a random video (within that category of emotion will render on the page)
-    - Chat feature: a space for the children to comment and reply to other's childrens experiences 
+Built for an integrative mindfulness experience that makes meditation fun for children
 
-# Description
-The tables were build in mySql, currently there are 3 tables in total - 2 currently in function. 
-Videos, Comments, and Plays(to be used later).
+## Table of Contents
 
-## Dependencies 
-- Run 'npm install' in the project directory to install all server dependencies
-- 'cd client' and run 'npm install' to install client dependencies 
-- create a `.env` file to your project folder. The name of the database is `mvp`: 
-DB_HOST=localhost
-  DB_USER=root
-  DB_NAME=mvp
-  DB_PASS=root
-  - run `npm run migrate` which will import the tables - videos and comments (and plays)
-  - init_db.sql contains the file which has the table information 
+- [Introduction](#introduction)
+- [Features & Views](#features-views)
+- [Tools Used](#tools-used)
+- [Getting Started](#getting-started)
+- [Database Schema](#database-schema)
+- [Acknowledgements](#acknowledgements)
 
+## Introduction
 
-# Future features 
-- To be added will the a feature that sounds video plays (already started in video.js)
-- with this, gamified elements will be added for the video that gets the most plays
+Welcome to the Mind Playground application! This project aims to provide a soothing experience through curated meditation and relaxation videos based on your current emotional state. Users can select from various emotions in order to be sent a catered, mindfulness experience.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Features && Views
 
-Currently, two official plugins are available:
+Home Page (HomePage): Users are greeted with an introductory message and an inviting image that sets the tone for relaxation. They can choose their current emotional state from buttons like happy, sad, angry, etc., to navigate to the corresponding video.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Video Display (VideoDisplay): Upon selecting an emotion, users are directed to a page displaying a YouTube video embedded within an iframe. Below the video, users can view and interact with the comment section to share their thoughts or read others' comments and replies.
+
+## Tools Used
+
+Frontend: React.js, React Router, Bootstrap
+Backend: Node.js, Express.js, Postman
+Database: MySQL
+Other Tools: JavaScript (ES6+), HTML, CSS, Axios for API requests, Excalidraw, Trello, Github, Slack
+
+# Getting Started
+
+- Clone the Repository: git clone <repository-url>
+- Install Dependencies: Navigate into the project directory and run npm install to install the necessary packages.
+- Set Up Database: Ensure MySQL is installed and create a database schema based on the provided schema in the model/helper.js file.
+- Run the Application: Start the frontend and backend servers using npm start for both client and server.
+
+## Database Schema
+
+One-to-Many (1
+) Relationship between Videos and Comments:
+Each video can have multiple comments. This is represented by the comments table having a foreign key (video_id) that links each comment to a specific video.
+Diagram:
+videos (1) ⟶ comments (N)
+One-to-Many (1
+) Relationship within Comments for Replies:
+Comments can have multiple replies. The parent_id field in the comments table links a reply to its parent comment, creating a nested comment structure.
+Diagram:
+comments (1) ⟶ comments (N) (self-referential relationship)
+One-to-Many (1
+) Relationship between Videos and Plays:
+Each video can have multiple play records. The plays table records each instance a video is played, with a foreign key (video_id) linking to the videos table.
+Diagram:
+videos (1) ⟶ plays (N)
+
+Current Tables:
++---------------+
+| Tables_in_mvp |
++---------------+
+| Comments |
+| Plays |
+| Videos |
++---------------+
+
+## Acknowledgements
+
+- Germinal Camps
+- Aaron Strachan
